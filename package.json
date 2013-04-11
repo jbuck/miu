@@ -13,6 +13,7 @@
   "author": "Jon Buckley <jon@jbuckley.ca>",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "~3.1.1"
+    "express": "~3.1.1",
+    "nunjucks": "~0.1.8a"
   }
 }
