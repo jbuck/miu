@@ -17,6 +17,7 @@ app.use( express.compress());
 app.use( express.static( path.join( __dirname + "/public" )));
 
 app.get( "/", routes.index );
+app.put( "/upload", routes.upload );
 
 app.listen( 3000, function() {
   console.log( "MIU server listening on port %d", 3000 );
