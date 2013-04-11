@@ -1,6 +1,12 @@
 module.exports = function( grunt ) {
   grunt.initConfig({
     pkg: grunt.file.readJSON( "package.json" ),
+
+    csslint: {
+      files: [
+        "public/**/*.css"
+      ]
+    },
     jshint: {
       files: [
         "Gruntfile.js",
@@ -11,7 +17,8 @@ module.exports = function( grunt ) {
     }
   });
 
+  grunt.loadNpmTasks( "grunt-contrib-csslint" );
   grunt.loadNpmTasks( "grunt-contrib-jshint" );
 
-  grunt.registerTask( "default", [ "jshint" ]);
+  grunt.registerTask( "default", [ "csslint", "jshint" ]);
 };
