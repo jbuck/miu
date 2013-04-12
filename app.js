@@ -7,6 +7,7 @@ var express = require( "express" ),
 // Load config from ".env"
 habitat.load();
 
+// Generate app variables
 var app = express(),
     env = new habitat(),
     nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' )));
@@ -24,6 +25,7 @@ app.use( express.static( path.join( __dirname + "/public" )));
 app.get( "/", routes.index );
 app.put( "/upload", routes.upload );
 
-app.listen( env.get( "port" ), function() {
-  console.log( "MIU server listening on port %d", env.get( "port" ));
+
+app.listen( env.get( "port", 3000 ), function() {
+  console.log( "MIU server listening (Probably http://localhost:%d )", env.get( "port", 3000 ));
 });
