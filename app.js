@@ -1,14 +1,19 @@
 // Bring in all your require modules
 var express = require( "express" ),
+    habitat = require( "habitat" ),
     nunjucks = require( "nunjucks" ),
     path = require( "path" );
 
+// Load config from ".env"
+habitat.load();
+
 var app = express(),
-    env = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' )));
+    env = new habitat(),
+    nunjucksEnv = new nunjucks.Environment( new nunjucks.FileSystemLoader( path.join( __dirname + '/views' )));
     routes = require( "./routes" );
 
 // Enable template rendering with nunjucks
-env.express( app );
+nunjucksEnv.express( app );
 // Don't send the "X-Powered-By: Express" header
 app.disable( "x-powered-by" );
 
@@ -19,6 +24,6 @@ app.use( express.static( path.join( __dirname + "/public" )));
 app.get( "/", routes.index );
 app.put( "/upload", routes.upload );
 
-app.listen( 3000, function() {
-  console.log( "MIU server listening on port %d", 3000 );
+app.listen( env.get( "port" ), function() {
+  console.log( "MIU server listening on port %d", env.get( "port" ));
 });
