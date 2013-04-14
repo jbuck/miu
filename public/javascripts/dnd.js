@@ -19,6 +19,9 @@
 
     files.forEach(function( f ) {
       var xhr = new XMLHttpRequest();
+      var fd = new FormData();
+
+      fd.append( "image", f );
 
       xhr.addEventListener( "progress", function( event ) {
         if ( event.lengthComputable ) {
@@ -29,7 +32,7 @@
         console.log( "Done uploading %s", f.name );
       });
       xhr.open( "PUT", "/upload", false );
-      xhr.send( f );
+      xhr.send( fd );
     });
 
   };
