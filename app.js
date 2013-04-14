@@ -25,7 +25,6 @@ app.use( express.static( path.join( __dirname + "/public" )));
 app.get( "/", routes.index );
 app.put( "/upload", routes.upload );
 
-
 app.listen( env.get( "port", 3000 ), function() {
   console.log( "MIU server listening (Probably http://localhost:%d )", env.get( "port", 3000 ));
 });
