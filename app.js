@@ -3,7 +3,8 @@ var express = require( "express" ),
     habitat = require( "habitat" ),
     knox = require( "knox" ),
     nunjucks = require( "nunjucks" ),
-    path = require( "path" );
+    path = require( "path" ),
+    persona = require( "express-persona" );
 
 // Load config from ".env"
 habitat.load();
@@ -30,9 +31,25 @@ app.use( express.logger());
 app.use( express.compress());
 app.use( express.static( path.join( __dirname + "/public" )));
 app.use( express.bodyParser());
+app.use( express.cookieParser());
+app.use( express.cookieSession({
+  secret: env.get( "SECRET" ),
+  cookie: {
+    maxAge: 2678400000 // 31 days
+  },
+  proxy: true
+}));
+app.use( app.router );
+app.use( middleware.errorHandler );
+
+// Add Persona authentication
+// Must be after app.use() calls, otherwise our middleware doesn't get executed!
+persona( app, {
+  audience: env.get( "HOSTNAME" )
+});
 
 app.get( "/", routes.index );
-app.put( "/upload", middleware.uploadToS3( s3 ), routes.upload );
+app.put( "/upload", middleware.isAuthenticated, middleware.uploadToS3( s3 ), routes.upload );
 
 app.listen( env.get( "PORT", 3000 ), function() {
   console.log( "MIU server listening (Probably http://localhost:%d )", env.get( "PORT", 3000 ));

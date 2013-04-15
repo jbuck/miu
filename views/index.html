@@ -3,11 +3,16 @@
   <head>
     <title>MIU</title>
     <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/persona-buttons.css">
+    <meta name="persona-email" content="{{ email }}">
   </head>
   <body>
     <h1>MIU</h1>
+    <a href="#" class="persona-button dark"><span>Sign in with your Email</span></a>
     <div class="dnd">Drop your image here</div>
     <!--<input class="select" type="file" multiple>-->
     <script src="javascripts/dnd.js"></script>
+    <script src="https://login.persona.org/include.js"></script>
+    <script src="javascripts/persona.js"></script>
   </body>
 </html>
