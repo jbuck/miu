@@ -97,7 +97,6 @@
 
 /* Triangle */
 .persona-button:before{
-  background: #42a9dd;
   content: '';
   display: block;
   height: 26px;
@@ -109,6 +108,7 @@
   margin-top: -13px;
   z-index: 0;
 
+  background: #42a9dd;
   background: -moz-linear-gradient(-45deg, #50b8e8, #3095ce);
   background: -ms-linear-gradient(-45deg, #50b8e8, #3095ce);
   background: -o-linear-gradient(-45deg, #50b8e8, #3095ce);

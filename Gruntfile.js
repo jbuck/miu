@@ -3,9 +3,15 @@ module.exports = function( grunt ) {
     pkg: grunt.file.readJSON( "package.json" ),
 
     csslint: {
-      files: [
-        "public/**/*.css"
-      ]
+      files: {
+        options: {
+          "adjoining-classes": false,
+          "gradients": false
+        },
+        src: [
+          "public/**/*.css"
+        ]
+      }
     },
     jshint: {
       files: [
