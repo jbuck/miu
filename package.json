@@ -13,15 +13,15 @@
   "author": "Jon Buckley <jon@jbuckley.ca>",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "~3.1.1",
+    "express": "3.2.0",
     "express-persona": "0.0.7",
-    "habitat": "~0.4.0",
-    "knox": "~0.7.0",
-    "nunjucks": "~0.1.8a"
+    "habitat": "0.4.1",
+    "knox": "0.7.0",
+    "nunjucks": "0.1.8a"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-csslint": "~0.1.2",
-    "grunt-contrib-jshint": "~0.4.3"
+    "grunt": "0.4.1",
+    "grunt-contrib-csslint": "0.1.2",
+    "grunt-contrib-jshint": "0.4.3"
   }
 }
