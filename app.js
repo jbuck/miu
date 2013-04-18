@@ -64,5 +64,5 @@ app.put( "/upload", middleware.isAuthenticated, middleware.uploadToS3( s3 ), rou
 
 // Start up the server
 app.listen( env.get( "PORT", 3000 ), function() {
-  console.log( "MIU server listening (Probably http://localhost:%d )", env.get( "PORT", 3000 ));
+  console.log( "Server listening (Probably http://localhost:%d )", env.get( "PORT", 3000 ));
 });
