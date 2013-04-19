@@ -6,5 +6,8 @@ module.exports = {
   },
   upload: function( req, res ) {
     res.send( 200 );
+  },
+  api: {
+    healthcheck: require( "./api/healthcheck")
   }
 };

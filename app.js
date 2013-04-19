@@ -60,6 +60,7 @@ persona( app, {
 
 // Express routes
 app.get( "/", routes.index );
+app.get( "/healthcheck", routes.api.healthcheck );
 app.put( "/upload", middleware.isAuthenticated, middleware.uploadToS3( s3 ), routes.upload );
 
 // Start up the server
