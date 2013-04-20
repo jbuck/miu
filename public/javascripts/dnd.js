@@ -1,6 +1,7 @@
 (function() {
   var drop = document.querySelector( ".dnd" ),
-      select = document.querySelector( ".select" );
+      select = document.querySelector( ".select" ),
+      uploaded = document.querySelector( ".uploaded" );
 
   drop.addEventListener( "dragover", function( event ) {
     event.stopPropagation();
@@ -29,7 +30,16 @@
         }
       });
       xhr.addEventListener( "load", function() {
+        if (this.status != 200) {
+          return;
+        }
+
+        var url = JSON.parse( this.responseText ).url;
+
         console.log( "Done uploading %s", f.name );
+        var li = document.createElement( "li" );
+        li.innerHTML = "<a href='" + url + "'>" + url + "</a>";
+        uploaded.appendChild(li);
       });
       xhr.open( "PUT", "/upload", false );
       xhr.send( fd );
