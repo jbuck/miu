@@ -14,13 +14,13 @@
 
   personaButton.addEventListener( "click", function() {
     if ( !loggedIn ) {
-      navigator.id.request();
+      navigator.idSSO.request();
     } else {
-      navigator.id.logout();
+      navigator.idSSO.logout();
     }
   });
 
-  navigator.id.watch({
+  navigator.idSSO.watch({
     loggedInUser: cookieEmail ? cookieEmail : null,
     onlogin: function( assertion ) {
     var xhr = new XMLHttpRequest();
